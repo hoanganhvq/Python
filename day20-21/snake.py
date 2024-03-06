@@ -14,7 +14,19 @@ class Snake:
         # Create 3 white segment in begining
         for position in STARTING_POSITION:
             self.add_segment(position)
+    def changeLocateonX(self):
+        new_y = self.head.ycor() * -1
+        self.head.goto(self.head.xcor(), new_y)
 
+    def changeLocateonY(self):
+        new_x = self.head.xcor() * -1
+        self.head.goto(new_x, self.head.ycor())
+    def reset_snake(self):
+        for seg in self.segments:
+            seg.goto(1000,100)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
     def add_segment(self, position):
         new_segment = Turtle("square")
         new_segment.color("white")

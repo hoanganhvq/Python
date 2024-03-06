@@ -33,15 +33,19 @@ while is_game_on:
         snake.extent()
         scoreboard.increase_score()
     #Phat hien va cham voi tuong'
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        is_game_on = False
-        scoreboard.game_over()
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280:
+        # scoreboard.reset()
+        snake.changeLocateonY()
+        # snake.reset_snake()
+    elif snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        # scoreboard.reset()
+        snake.changeLocateonX()
+        # snake.reset_snake()
 
     #Phat hien va cham voi duoi
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 15:
-            is_game_on = False
-            scoreboard.game_over()
-
+            scoreboard.reset()
+            snake.reset_snake()
 
 screen.exitonclick()
