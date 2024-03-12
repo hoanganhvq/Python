@@ -29,6 +29,7 @@ while is_game_on:
 
     #Phats hien va cham voi thuc an
     if snake.head.distance(food) < 15:
+        print("Ăn")
         food.refresh()
         snake.extent()
         scoreboard.increase_score()
